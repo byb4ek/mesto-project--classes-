@@ -18,18 +18,24 @@ export interface IUser {
 export interface ICardsData {
 	cards: ICard[];
 	preview: string | null;
+	addCard(card: ICard): void;
+	deleteCard(cardId: string, payload: Function | null): void;
+	updateCard(card: ICard, payload: Function | null): void;
+	getCard(cardId: string): ICard;
+	checkValidation(data: Record<keyof TCardInfo, string>): boolean;
 }
 
-/* Pick<Type, Keys>
-(т.е из свойства используем выбранное количесвто свойсв)
-Создает тип, выбирая набор свойств Keys (строковый литерал или объединение строковых литералов) из Type. */
+export interface IUserData{
+	getUserInfo(): TUserPublicInfo;
+	setUserInfo(userData: IUser): void;
+	checkUserValidation(data: Record<keyof TUserPublicInfo, string>): boolean;
+}
 
-// тип для главной страницы 
-export type TUserPublicInfo = Pick<IUser, "name" | "about" | "avatar">;
 
-//типы для модалок 
-export type TCardInfo = Pick<ICard, "name" | "link">;
+export type TCardInfo = Pick<ICard, 'name' | 'link'>;
 
-export type TUserBaseInfo = Pick<IUser, "name" | "about">;
+export type TUserPublicInfo = Pick<IUser, 'name' | 'about' | 'avatar'>;
 
-export type TUserAvatar = Pick<IUser, "avatar">;
+export type TUserBaseInfo = Pick<IUser, 'name' | 'about'>;
+
+export type TUserAvatar = Pick<IUser, 'avatar'>;

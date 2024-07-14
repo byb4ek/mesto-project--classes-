@@ -1,8 +1,7 @@
-export const API_URL = `${process.env.API_ORIGIN}/v1/wff-cohort-16/`;
+export const API_URL = `${process.env.API_ORIGIN}/cohort0`;
 export const settings = {
-	headers:{
+	headers: {
 		authorization: `${process.env.API_TOKEN}`,
-		'Content-Type':'application/json',
+		'Content-Type': 'application/json',
 	},
 };
-/* baseUrl: "https://nomoreparties.co/v1/wff-cohort-16/", */
