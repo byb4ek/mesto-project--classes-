@@ -4,7 +4,7 @@ export interface ICard {
 	name: string;
 	link: string;
 	owner: IUser;
-	createdAt: Date;
+	createdAt: string;
 }
 
 export interface IUser {
@@ -39,3 +39,11 @@ export type TUserPublicInfo = Pick<IUser, 'name' | 'about' | 'avatar'>;
 export type TUserBaseInfo = Pick<IUser, 'name' | 'about'>;
 
 export type TUserAvatar = Pick<IUser, 'avatar'>;
+
+export type ApiPostMethods = 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+
+export interface IApi {
+    baseUrl: string;
+    get<T>(uri: string): Promise<T>;
+    post<T>(uri: string, data: object, method?: ApiPostMethods): Promise<T>;
+}
